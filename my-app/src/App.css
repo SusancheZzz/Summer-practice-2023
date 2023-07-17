@@ -8,8 +8,9 @@
   background-color: white;
 }
 
-.black-and-white {
-  filter: grayscale(100%);
+.invert{
+  -webkit-filter: invert(1);
+  filter: invert(1);
 }
 
 .top-half {

@@ -8,7 +8,7 @@ const App = () => {
   const [bottomText, setBottomText] = useState('');
   const [showModifiedImage, setShowModifiedImage] = useState(false);
   const [isBlackAndWhite, setIsBlackAndWhite] = useState(false);
-
+  const [IsInversImage, setIsInversImage] = useState(false);
 
   const handleSlideClick = (index) => {
     if (selectedSlide === index) {
@@ -68,6 +68,11 @@ const App = () => {
   const handleToggleBlackAndWhite = () => {
     setIsBlackAndWhite((prevValue) => !prevValue);
   };
+
+  const handleInversImage = () => {
+    setIsInversImage((prevValue) => !prevValue);
+  };
+
   const slides = [
     { title: 'Слайд 1' },
     { title: 'Слайд 2' },
@@ -120,6 +125,10 @@ const App = () => {
               <button className="apply-button" onClick={handleToggleBlackAndWhite}>
                 Toggle B/W
               </button>
+
+              <button className="apply-button" onClick={handleInversImage}>
+                Сlick to Invert
+              </button>
             </div>
 
           </div>
@@ -128,6 +137,7 @@ const App = () => {
                 <img
                     src={selectedImage}
                     className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : '')}
+                    classNameInvers={'selected-image' + (IsInversImage ? 'invert' : '')}
                     alt="Selected"
                 />
             )}
