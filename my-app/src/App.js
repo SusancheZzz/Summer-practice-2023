@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import Filters from './Filters';
-import BlackAndWhiteImage from "./BlackAndWhiteImage";
-import logo from './img/image1.jpg';
 
 const App = () => {
   const [selectedSlide, setSelectedSlide] = useState(null);
@@ -10,6 +7,8 @@ const App = () => {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [showModifiedImage, setShowModifiedImage] = useState(false);
+  const [isBlackAndWhite, setIsBlackAndWhite] = useState(false);
+
 
   const handleSlideClick = (index) => {
     if (selectedSlide === index) {
@@ -26,7 +25,6 @@ const App = () => {
   };
 
   const handleTopTextChange = (e) => {
-
     setTopText(e.target.value);
   };
 
@@ -67,7 +65,9 @@ const App = () => {
       }
     }
   };
-
+  const handleToggleBlackAndWhite = () => {
+    setIsBlackAndWhite((prevValue) => !prevValue);
+  };
   const slides = [
     { title: 'Слайд 1' },
     { title: 'Слайд 2' },
@@ -77,21 +77,8 @@ const App = () => {
     { title: 'Слайд 6' },
   ];
 
-
-
-
-
-
-
-  const [SelectedSlide, SetSelectedSlide] = useState(null);
-  const [SelectedImage, SetSelectedImage] = useState(null);
-  const [ShowModifiedImage, SetShowModifiedImage] = useState(false);
-
-
-
   return (
       <div className="container">
-
         <div className="slider">
           {slides.map((slide, index) => (
               <div
@@ -101,10 +88,8 @@ const App = () => {
               >
                 <img
                     src={`img/image${index + 1}.jpg`}
-                    //src={`./img/boxing.jpg`}
                     alt="Slide"
                     className={`slide-image ${selectedImage === `img/image${index + 1}.jpg` ? 'enlarged' : ''}`}
-                    //className={`slide-image ${selectedImage === `./img/boxing.jpg`? 'enlarged' : ''}`}
                 />
               </div>
           ))}
@@ -125,68 +110,30 @@ const App = () => {
                   value={bottomText}
                   onChange={handleBottomTextChange}
               />
+
               <button className="apply-button" onClick={handleApplyButtonClick}>
-                GO
+                GO to Meme
               </button>
             </div>
+
+            <div className="input-row">
+              <button className="apply-button" onClick={handleToggleBlackAndWhite}>
+                Toggle B/W
+              </button>
+            </div>
+
           </div>
           <div className="top-right">
             {showModifiedImage && selectedImage && (
-                <img src={selectedImage} className="selected-image" alt="Selected" />
-            )}
-          </div>
-        </div>
-
-
-
-
-
-
-
-        <div className="slider">
-          {slides.map((slide, index) => (
-              <div
-                  key={index}
-                  className={`slide ${SelectedSlide === index ? 'active' : ''}`}
-                  onClick={() => handleSlideClick(index)}
-              >
                 <img
-                    src={`img/image${index + 1}.jpg`}
-                    alt="Slide"
-                    className={`slide-image ${SelectedImage === `img/image${index + 1}.jpg` ? 'enlarged' : ''}`}
+                    src={selectedImage}
+                    className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : '')}
+                    alt="Selected"
                 />
-              </div>
-          ))}
-        </div>
-        <div className="otstup"></div>
-        <div className="button-container">
-          <div className="top-left">
-            <div className="input-row">
-
-              <button className="apply-button" onClick={handleApplyButtonClick}>
-                Convert to Black and White
-              </button>
-
-            </div>
-          </div>
-          <div className="top-right">
-            {ShowModifiedImage && SelectedImage && (
-                <img src={SelectedImage} className="selected-image" alt="Selected" />
             )}
           </div>
         </div>
-
-
-
-
-
-        <div>
-          <div> <BlackAndWhiteImage src={selectedImage} /> </div>
-        </div>
-
       </div>
-
   );
 };
-
 export default App;
