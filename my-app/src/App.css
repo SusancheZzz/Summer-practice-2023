@@ -114,6 +114,10 @@ input[type="text"] {
 
 }
 
+.black-and-white {
+  filter: grayscale(100%);
+}
+
 .selected-image {
   max-width: contain;
   object-fit: cover;

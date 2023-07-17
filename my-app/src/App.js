@@ -7,6 +7,8 @@ const App = () => {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [showModifiedImage, setShowModifiedImage] = useState(false);
+  const [isBlackAndWhite, setIsBlackAndWhite] = useState(false);
+
 
   const handleSlideClick = (index) => {
     if (selectedSlide === index) {
@@ -63,7 +65,9 @@ const App = () => {
       }
     }
   };
-
+  const handleToggleBlackAndWhite = () => {
+    setIsBlackAndWhite((prevValue) => !prevValue);
+  };
   const slides = [
     { title: 'Слайд 1' },
     { title: 'Слайд 2' },
@@ -106,19 +110,30 @@ const App = () => {
                   value={bottomText}
                   onChange={handleBottomTextChange}
               />
+
               <button className="apply-button" onClick={handleApplyButtonClick}>
-                GO
+                GO to Meme
               </button>
             </div>
+
+            <div className="input-row">
+              <button className="apply-button" onClick={handleToggleBlackAndWhite}>
+                Toggle B/W
+              </button>
+            </div>
+
           </div>
           <div className="top-right">
             {showModifiedImage && selectedImage && (
-                <img src={selectedImage} className="selected-image" alt="Selected" />
+                <img
+                    src={selectedImage}
+                    className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : '')}
+                    alt="Selected"
+                />
             )}
           </div>
         </div>
       </div>
   );
 };
-
 export default App;
