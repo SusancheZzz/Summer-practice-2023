@@ -1,24 +1,21 @@
-.container {
+body {
+  background-image: url('https://freephotos.cc/storage/preview/path/d5wonf2KqVEXB49jWdnfSsI8jGJ0hXagaevlcKiM.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: white;
+  background-color: transparent;
 }
-
-.landing-wrapper {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top left;
-}
-
-.invert{
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
-}
-
+/*Этот блок стилизует контейнер, который
+содержит все элементы вашего приложения.
+Он использует flexbox для вертикального
+выравнивания и центрирования содержимого по центру страницы.*/
 .top-half {
   width: 100%;
   height: 50%;
@@ -26,7 +23,9 @@
   align-items: center;
   justify-content: center;
 }
-
+/*Этот блок стилизует слайдер, который содержит слайды.
+Он использует flexbox для выравнивания слайдов
+по горизонтали и растягивания содержимого на всю ширину.*/
 .slider {
 
   display: flex;
@@ -34,6 +33,11 @@
   width: 100%;
   white-space:initial;
 }
+/*Этот блок стилизует слайдер,
+который содержит слайды.
+Он использует flexbox для выравнивания
+слайдов по горизонтали
+и растягивания содержимого на всю ширину..*/
 
 .slide {
   width: 150px;
@@ -49,26 +53,30 @@
   margin-right: 1rem;
   transition: all 0.3s ease;
 }
-
+/*Этот блок стилизует отдельные слайды в слайдере.
+Он задает им размеры, рамку, тень, округлые углы,
+фон, отступы, цвет текста, выравнивание текста и
+курсор указателя. Также задана анимация для плавного
+перехода при наведении на слайд.*/
 .slide:last-child {
   margin-right: 0;
 }
-
+/**/
 .slide:hover {
   transform: scale(1.2);
 }
-
+/**/
 .slide.active {
   box-shadow: 4px 4px 9px rgb(239, 103, 148);
   color: #fff;
 }
-
+/**/
 .slide-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
 }
-
+/**/
 .bottom-half {
   width: 100%;
   height: 50%;
@@ -76,36 +84,30 @@
   justify-content: center;
   align-items: center;
 }
+/*Этот блок стилизует изображения внутри слайдов. Он устанавливает максимальную ширину
+и высоту изображения и задает способ его заполнения внутри слайда (обрезка).*/
 .otstup {
 
   width:100%;
   height:30px;
 
 }
+/**/
 .top-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 1rem;
 }
-
+/**/
 .input-row {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
 }
-
+/**/
 input[type="text"] {
   margin-right: 0.5rem;
-}
-
-.apply-button {
-  background: linear-gradient(90deg, #ff85e4 0%, #229efd 179.25%);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  cursor: pointer;
 }
 
 .top-right {
@@ -125,10 +127,6 @@ input[type="text"] {
 
 }
 
-.black-and-white {
-  filter: grayscale(100%);
-}
-
 .selected-image {
   max-width: contain;
   object-fit: cover;
@@ -143,4 +141,53 @@ input[type="text"] {
   color: #fff;
   text-align: center;
   font-size: 14px;
+}
+
+.black-and-white {
+  filter: grayscale(100%);
+}
+
+.inverted {
+  filter: invert(100%);
+}
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.apply-button {
+  background: linear-gradient(90deg, #87ff77 0%, #1003ff 179.25%);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 7px;
+}
+
+.filter-button{
+  background: linear-gradient(to bottom right, #de24f1 0%, #f0d809 179.25%);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 7px;
+  margin-block-end: 7px;
+}
+
+.filter-button.active {
+  background-color: #ccc;
+}
+
+.reset-button {
+  background: linear-gradient(to bottom right, blue, rgb(48, 133, 224));
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 7px;
+  margin-block-end: 7px;
 }
