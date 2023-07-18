@@ -8,8 +8,15 @@
   background-color: white;
 }
 
-.black-and-white {
-  filter: grayscale(100%);
+.landing-wrapper {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.invert{
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
 
 .top-half {

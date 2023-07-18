@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import background from "./background.jpg";
 
 const App = () => {
   const [selectedSlide, setSelectedSlide] = useState(null);
@@ -8,7 +9,7 @@ const App = () => {
   const [bottomText, setBottomText] = useState('');
   const [showModifiedImage, setShowModifiedImage] = useState(false);
   const [isBlackAndWhite, setIsBlackAndWhite] = useState(false);
-
+  const [IsInversImage, setIsInversImage] = useState(false);
 
   const handleSlideClick = (index) => {
     if (selectedSlide === index) {
@@ -68,6 +69,11 @@ const App = () => {
   const handleToggleBlackAndWhite = () => {
     setIsBlackAndWhite((prevValue) => !prevValue);
   };
+
+  const handleInversImage = () => {
+    setIsInversImage((preVValue) => !preVValue);
+  };
+
   const slides = [
     { title: 'Слайд 1' },
     { title: 'Слайд 2' },
@@ -78,8 +84,9 @@ const App = () => {
   ];
 
   return (
-      <div className="container">
-        <div className="slider">
+      <div className="container" style={{ backgroundImage: `url(${background})` }}>
+
+          <div className="slider" >
           {slides.map((slide, index) => (
               <div
                   key={index}
@@ -94,8 +101,9 @@ const App = () => {
               </div>
           ))}
         </div>
-        <div className="otstup"></div>
-        <div className="button-container">
+
+          <div className="otstup"></div>
+          <div className="button-container">
           <div className="top-left">
             <div className="input-row">
               <input
@@ -120,6 +128,12 @@ const App = () => {
               <button className="apply-button" onClick={handleToggleBlackAndWhite}>
                 Toggle B/W
               </button>
+              <h5>
+                <font color="blue">..</font>
+              </h5>
+              <button className="apply-button" onClick={handleInversImage}>
+                Сlick to Invert
+              </button>
             </div>
 
           </div>
@@ -127,7 +141,7 @@ const App = () => {
             {showModifiedImage && selectedImage && (
                 <img
                     src={selectedImage}
-                    className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : '')}
+                    className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : (IsInversImage ? 'invert' : ''))}
                     alt="Selected"
                 />
             )}
