@@ -8,9 +8,15 @@
   background-color: white;
 }
 
+.landing-wrapper {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
 .invert{
-  -webkit-filter: invert(1);
-  filter: invert(1);
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
 
 .top-half {

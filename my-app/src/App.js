@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import background from "./background.jpg";
 
 const App = () => {
   const [selectedSlide, setSelectedSlide] = useState(null);
@@ -70,7 +71,7 @@ const App = () => {
   };
 
   const handleInversImage = () => {
-    setIsInversImage((prevValue) => !prevValue);
+    setIsInversImage((preVValue) => !preVValue);
   };
 
   const slides = [
@@ -83,8 +84,9 @@ const App = () => {
   ];
 
   return (
-      <div className="container">
-        <div className="slider">
+      <div className="container" style={{ backgroundImage: `url(${background})` }}>
+
+          <div className="slider" >
           {slides.map((slide, index) => (
               <div
                   key={index}
@@ -99,8 +101,9 @@ const App = () => {
               </div>
           ))}
         </div>
-        <div className="otstup"></div>
-        <div className="button-container">
+
+          <div className="otstup"></div>
+          <div className="button-container">
           <div className="top-left">
             <div className="input-row">
               <input
@@ -125,7 +128,9 @@ const App = () => {
               <button className="apply-button" onClick={handleToggleBlackAndWhite}>
                 Toggle B/W
               </button>
-
+              <h5>
+                <font color="blue">..</font>
+              </h5>
               <button className="apply-button" onClick={handleInversImage}>
                 Сlick to Invert
               </button>
