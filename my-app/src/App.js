@@ -141,8 +141,7 @@ const App = () => {
             {showModifiedImage && selectedImage && (
                 <img
                     src={selectedImage}
-                    className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : '')}
-                    classNameInvers={'selected-image' + (IsInversImage ? 'invert' : '')}
+                    className={'selected-image ' + (isBlackAndWhite ? 'black-and-white' : (IsInversImage ? 'invert' : ''))}
                     alt="Selected"
                 />
             )}
